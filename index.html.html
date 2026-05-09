@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Test Store</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+        /* Cabecera con imagen de moda */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        #titulo-dinamico {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        /* Cuadrícula de productos */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            border: none;
+            text-align: center;
+            position: relative;
+        }
+        .card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .card h3 {
+            margin: 15px 0 5px;
+            font-size: 1.2rem;
+        }
+        .precio {
+            color: #666;
+            font-weight: bold;
+        }
+        .boton-compra {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        footer {
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Este título cambiará solo con JavaScript -->
+        <h1 id="titulo-dinamico">Nueva Colección</h1>
+        <p>Encuentra tu estilo único hoy mismo</p>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Tendencias de Temporada</h2>
+        <div class="grid">
+            <!-- Producto 1 -->
+            <div class="card">
+                <img src="https://unsplash.com" alt="Abrigos">
+                <h3>Abrigos Urbanos</h3>
+                <p class="precio">$59.990</p>
+                <a href="#" class="boton-compra">Ver detalles</a>
+            </div>
+            <!-- Producto 2 -->
+            <div class="card">
+                <img src="https://unsplash.com" alt="Casual">
+                <h3>Estilo Casual</h3>
+                <p class="precio">$24.990</p>
+                <a href="#" class="boton-compra">Ver detalles</a>
+            </div>
+            <!-- Producto 3 -->
+            <div class="card">
+                <img src="https://unsplash.com" alt="Accesorios">
+                <h3>Accesorios Essential</h3>
+                <p class="precio">$15.500</p>
+                <a href="#" class="boton-compra">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Fashion Studio. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        // Lógica para que los encabezados sean dinámicos
+        const titulos = [
+            "Nueva Colección",
+            "Ofertas de Invierno",
+            "Tendencias 2026",
+            "Vístete para el Éxito"
+        ];
+        
+        let indice = 0;
+        const elementoTitulo = document.getElementById('titulo-dinamico');
+
+        function cambiarTitulo() {
+            indice = (indice + 1) % titulos.length;
+            elementoTitulo.style.opacity = 0; // Efecto de desvanecimiento
+            
+            setTimeout(() => {
+                elementoTitulo.innerText = titulos[indice];
+                elementoTitulo.style.opacity = 1;
+            }, 500);
+        }
+
+        // Cambia el título cada 3 segundos
+        setInterval(cambiarTitulo, 3000);
+        
+        // Estilo extra para la transición suave
+        elementoTitulo.style.transition = "opacity 0.5s ease";
+    </script>
+
+</body>
+</html>
